@@ -1,9 +1,8 @@
 <!doctype html>
-
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gym Check-in</title>
 
   <style>
@@ -46,12 +45,9 @@
 
     .eyebrow {
       display: inline-flex;
-      align-items: center;
-      gap: 7px;
       padding: 7px 12px;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.58);
-      border: 1px solid rgba(255, 255, 255, 0.75);
       color: var(--mint-deep);
       font-size: 0.78rem;
       letter-spacing: 0.08em;
@@ -84,7 +80,6 @@
     .question {
       font-size: clamp(1.75rem, 5vw, 2.55rem);
       margin: 0 0 24px;
-      letter-spacing: -0.045em;
     }
 
     label {
@@ -106,12 +101,6 @@
       font: inherit;
     }
 
-    input:focus,
-    textarea:focus {
-      border-color: #5bb777;
-      box-shadow: 0 0 0 4px rgba(91, 183, 119, 0.14);
-    }
-
     textarea {
       min-height: 88px;
       resize: vertical;
@@ -121,7 +110,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin: 5px 0 4px;
+      margin-top: 6px;
     }
 
     .choice {
@@ -130,17 +119,11 @@
       padding: 17px;
       cursor: pointer;
       background: rgba(255, 255, 255, 0.5);
-      transition: 0.2s ease;
       display: flex;
       align-items: center;
       justify-content: space-between;
       font-weight: 850;
-      font-size: 1.1rem;
-    }
-
-    .choice:hover {
-      transform: translateY(-2px);
-      background: rgba(255, 255, 255, 0.82);
+      font-size: 1.05rem;
     }
 
     .choice.active.yes {
@@ -156,7 +139,7 @@
     }
 
     .emoji {
-      font-size: 1.48rem;
+      font-size: 1.45rem;
     }
 
     .extra {
@@ -179,19 +162,14 @@
       font: inherit;
       font-weight: 800;
       font-size: 1rem;
-      transition: 0.2s ease;
     }
 
-    .submit:hover {
-      background: #2e4838;
-      transform: translateY(-2px);
-    }
-
-    .hint {
-      margin: 13px 0 0;
+    .message {
+      min-height: 22px;
+      margin: 12px 0 0;
       text-align: center;
       color: var(--muted);
-      font-size: 0.82rem;
+      font-size: 0.84rem;
     }
 
     .board {
@@ -255,7 +233,6 @@
 
     .entry {
       background: rgba(255, 255, 255, 0.56);
-      border: 1px solid rgba(255, 255, 255, 0.67);
       border-radius: 16px;
       padding: 14px 15px;
       display: flex;
@@ -300,110 +277,102 @@
       font-size: 0.92rem;
     }
 
-    .reset {
-      border: none;
-      background: none;
-      color: var(--muted);
-      text-decoration: underline;
-      cursor: pointer;
-      font: inherit;
-      font-size: 0.78rem;
-      padding: 12px 0 0;
-    }
-
     footer {
       text-align: center;
       padding: 23px 0 0;
       color: #718278;
       font-size: 0.8rem;
     }
-
-    @media (max-width: 520px) {
-      .entry {
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .pill {
-        align-self: flex-start;
-      }
-    }
   </style>
-
 </head>
 
 <body>
   <main class="wrap">
     <header>
-      <div class="eyebrow">✦ tiny group ritual</div>
+      <div class="eyebrow">✦ group workout vote</div>
       <h1>Gym Check-in</h1>
-      <p class="subtitle">Are we working out today?</p>
+      <p class="subtitle">今天健身吗？</p>
     </header>
 
-<section class="card">
-  <h2 class="question">Today 健身吗？</h2>
+    <section class="card">
+      <h2 class="question">Are we working out today?</h2>
 
-  <label for="name">Your name</label>
-  <input id="name" maxlength="30" placeholder="例如 Peter" />
+      <label for="name">Your name</label>
+      <input id="name" maxlength="30" placeholder="例如 Peter">
 
-  <label>Your answer</label>
+      <label>Your answer</label>
 
-  <div class="choices">
-    <button class="choice yes" data-vote="yes" type="button">
-      <span>Yes, let's go</span>
-      <span class="emoji">💪</span>
-    </button>
+      <div class="choices">
+        <button class="choice yes" data-vote="yes" type="button">
+          <span>Yes, let's go</span>
+          <span class="emoji">💪</span>
+        </button>
 
-    <button class="choice no" data-vote="no" type="button">
-      <span>Not today</span>
-      <span class="emoji">🛋️</span>
-    </button>
-  </div>
+        <button class="choice no" data-vote="no" type="button">
+          <span>Not today</span>
+          <span class="emoji">🛋️</span>
+        </button>
+      </div>
 
-  <div class="extra" id="extra">
-    <label for="time">What time works?</label>
-    <input id="time" type="time" />
+      <div class="extra" id="extra">
+        <label for="time">What time works?</label>
+        <input id="time" type="time">
 
-    <label for="note">备注（可选）</label>
-    <textarea id="note" maxlength="160" placeholder="比如：Leg day？健身房门口见？"></textarea>
-  </div>
+        <label for="note">备注（可选）</label>
+        <textarea id="note" maxlength="160" placeholder="例如：Leg day？健身房门口见？"></textarea>
+      </div>
 
-  <button class="submit" id="submit" type="button">Add my vote</button>
+      <button class="submit" id="submit" type="button">Add my vote</button>
+      <div class="message" id="message"></div>
+    </section>
 
-  <p class="hint">同一个名字再次投票会更新你的回答。</p>
-</section>
+    <section class="card board">
+      <div class="board-top">
+        <h2>Today's crew</h2>
+        <span class="count" id="count">Loading...</span>
+      </div>
 
-<section class="card board">
-  <div class="board-top">
-    <h2>Today's crew</h2>
-    <span class="count" id="count">0 responses</span>
-  </div>
+      <div class="summary">
+        <div class="stat y">
+          <strong id="yesCount">0</strong>
+          <span>ready to move</span>
+        </div>
 
-  <div class="summary">
-    <div class="stat y">
-      <strong id="yesCount">0</strong>
-      <span>ready to move</span>
-    </div>
+        <div class="stat n">
+          <strong id="noCount">0</strong>
+          <span>taking a rest day</span>
+        </div>
+      </div>
 
-    <div class="stat n">
-      <strong id="noCount">0</strong>
-      <span>taking a rest day</span>
-    </div>
-  </div>
+      <div class="entries" id="entries"></div>
+    </section>
 
-  <div class="entries" id="entries"></div>
-
-  <button class="reset" id="reset" type="button">
-    Clear this device's demo votes
-  </button>
-</section>
-
-<footer>Made for friends who need a tiny nudge.</footer>
-
+    <footer>Made for friends who need a tiny nudge.</footer>
   </main>
 
-  <script>
-    const STORAGE = "gym-checkin-v1";
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+    import {
+      getDatabase,
+      ref,
+      push,
+      set,
+      onValue
+    } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDW0f5YxKBGs9OcM1TF5hwm53McAz46bjo",
+      authDomain: "gym-checkin-99883.firebaseapp.com",
+      databaseURL: "https://gym-checkin-99883-default-rtdb.firebaseio.com",
+      projectId: "gym-checkin-99883",
+      storageBucket: "gym-checkin-99883.firebasestorage.app",
+      messagingSenderId: "294649097198",
+      appId: "1:294649097198:web:ac0cfeadbb6a6655dafcff"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const votesRef = ref(database, "votes");
 
     let selectedVote = "";
 
@@ -415,77 +384,15 @@
     const yesCount = document.getElementById("yesCount");
     const noCount = document.getElementById("noCount");
     const count = document.getElementById("count");
+    const message = document.getElementById("message");
     const submitButton = document.getElementById("submit");
-    const resetButton = document.getElementById("reset");
 
     const choices = [...document.querySelectorAll(".choice")];
 
-    function loadVotes() {
-      try {
-        return JSON.parse(localStorage.getItem(STORAGE)) || [];
-      } catch {
-        return [];
-      }
-    }
-
-    function saveVotes(votes) {
-      localStorage.setItem(STORAGE, JSON.stringify(votes));
-    }
-
     function escapeHTML(value) {
       const div = document.createElement("div");
-      div.textContent = value;
+      div.textContent = value || "";
       return div.innerHTML;
-    }
-
-    function renderVotes() {
-      const votes = loadVotes();
-
-      const yesVotes = votes.filter(vote => vote.vote === "yes").length;
-      const noVotes = votes.filter(vote => vote.vote === "no").length;
-
-      yesCount.textContent = yesVotes;
-      noCount.textContent = noVotes;
-
-      count.textContent =
-        votes.length + " response" + (votes.length === 1 ? "" : "s");
-
-      if (votes.length === 0) {
-        entries.innerHTML =
-          '<div class="empty">No votes yet — be the first brave soul.</div>';
-        return;
-      }
-
-      entries.innerHTML = votes
-        .map(vote => {
-          let detail = "";
-
-          if (vote.vote === "yes") {
-            detail = vote.time
-              ? "⏰ " + escapeHTML(vote.time)
-              : "Time not set yet";
-
-            if (vote.note) {
-              detail += "<br>💬 " + escapeHTML(vote.note);
-            }
-          } else {
-            detail = "Rest day";
-          }
-
-          return `
-            <div class="entry">
-              <div>
-                <div class="entry-name">${escapeHTML(vote.name)}</div>
-                <div class="entry-detail">${detail}</div>
-              </div>
-
-              <span class="pill ${vote.vote}">
-                ${vote.vote === "yes" ? "YES 💪" : "NO ✦"}
-              </span>
-            </div>
-          `;
-        })
-        .join("");
     }
 
     choices.forEach(button => {
@@ -497,72 +404,110 @@
         });
 
         button.classList.add("active");
-
-        if (selectedVote === "yes") {
-          extra.classList.add("show");
-        } else {
-          extra.classList.remove("show");
-        }
+        extra.classList.toggle("show", selectedVote === "yes");
       });
     });
 
-    submitButton.addEventListener("click", () => {
+    submitButton.addEventListener("click", async () => {
       const name = nameInput.value.trim();
       const time = timeInput.value;
       const note = noteInput.value.trim();
 
       if (!name) {
+        message.textContent = "Please enter your name first.";
         nameInput.focus();
         return;
       }
 
       if (!selectedVote) {
-        alert("Please choose Yes or No first.");
+        message.textContent = "Please choose Yes or No first.";
         return;
       }
 
-      const votes = loadVotes();
+      submitButton.disabled = true;
+      submitButton.textContent = "Saving...";
 
-      const record = {
-        name: name,
-        vote: selectedVote,
-        time: selectedVote === "yes" ? time : "",
-        note: selectedVote === "yes" ? note : ""
-      };
+      try {
+        const newVoteRef = push(votesRef);
 
-      const existingIndex = votes.findIndex(
-        vote => vote.name.toLowerCase() === name.toLowerCase()
-      );
+        await set(newVoteRef, {
+          name: name,
+          vote: selectedVote,
+          time: selectedVote === "yes" ? time : "",
+          note: selectedVote === "yes" ? note : "",
+          createdAt: Date.now()
+        });
 
-      if (existingIndex >= 0) {
-        votes[existingIndex] = record;
-      } else {
-        votes.unshift(record);
+        nameInput.value = "";
+        timeInput.value = "";
+        noteInput.value = "";
+        selectedVote = "";
+        extra.classList.remove("show");
+
+        choices.forEach(choice => {
+          choice.classList.remove("active");
+        });
+
+        message.textContent = "Vote saved — everyone can see it now.";
+      } catch (error) {
+        console.error(error);
+        message.textContent = "Could not save. Check Firebase Rules.";
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Add my vote";
+      }
+    });
+
+    onValue(votesRef, snapshot => {
+      const data = snapshot.val();
+      const votes = data
+        ? Object.entries(data).map(([id, vote]) => ({ id, ...vote }))
+        : [];
+
+      votes.sort((a, b) => b.createdAt - a.createdAt);
+
+      const yesVotes = votes.filter(vote => vote.vote === "yes").length;
+      const noVotes = votes.filter(vote => vote.vote === "no").length;
+
+      yesCount.textContent = yesVotes;
+      noCount.textContent = noVotes;
+      count.textContent =
+        votes.length + " response" + (votes.length === 1 ? "" : "s");
+
+      if (votes.length === 0) {
+        entries.innerHTML =
+          '<div class="empty">No votes yet — be the first brave soul.</div>';
+        return;
       }
 
-      saveVotes(votes);
+      entries.innerHTML = votes.map(vote => {
+        let details = "";
 
-      nameInput.value = "";
-      timeInput.value = "";
-      noteInput.value = "";
-      selectedVote = "";
+        if (vote.vote === "yes") {
+          details = vote.time
+            ? "⏰ " + escapeHTML(vote.time)
+            : "Time not set yet";
 
-      choices.forEach(choice => {
-        choice.classList.remove("active");
-      });
+          if (vote.note) {
+            details += "<br>💬 " + escapeHTML(vote.note);
+          }
+        } else {
+          details = "Rest day";
+        }
 
-      extra.classList.remove("show");
-
-      renderVotes();
+        return `
+          <div class="entry">
+            <div>
+              <div class="entry-name">${escapeHTML(vote.name)}</div>
+              <div class="entry-detail">${details}</div>
+            </div>
+            <span class="pill ${vote.vote}">
+              ${vote.vote === "yes" ? "YES 💪" : "NO ✦"}
+            </span>
+          </div>
+        `;
+      }).join("");
     });
-
-    resetButton.addEventListener("click", () => {
-      localStorage.removeItem(STORAGE);
-      renderVotes();
-    });
-
-    renderVotes();
   </script>
-
 </body>
 </html>
