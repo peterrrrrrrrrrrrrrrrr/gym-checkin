@@ -291,7 +291,7 @@
     <header>
       <div class="eyebrow">✦ group workout vote</div>
       <h1>Gym Check-in</h1>
-      <p class="subtitle">今天健身吗？</p>
+      <p class="subtitle">今天健身吗？ · 日本时间每天 00:00 自动换新投票板</p>
     </header>
 
     <section class="card">
@@ -372,7 +372,35 @@
 
     const app = initializeApp(firebaseConfig);
     const database = getDatabase(app);
-    const votesRef = ref(database, "votes");
+
+    // Use Japan time so every visitor sees the same daily board.
+    function getTokyoDateKey() {
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "Asia/Tokyo",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+      }).formatToParts(new Date());
+
+      const date = Object.fromEntries(
+        parts
+          .filter(part => ["year", "month", "day"].includes(part.type))
+          .map(part => [part.type, part.value])
+      );
+
+      return `${date.year}-${date.month}-${date.day}`;
+    }
+
+    // Example: votes/2026-06-26
+    const todayKey = getTokyoDateKey();
+    const votesRef = ref(database, `votes/${todayKey}`);
+
+    // If the page stays open past midnight in Japan, switch to the new day's board.
+    setInterval(() => {
+      if (getTokyoDateKey() !== todayKey) {
+        window.location.reload();
+      }
+    }, 30000);
 
     let selectedVote = "";
 
